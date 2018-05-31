@@ -3,10 +3,10 @@ class view
 {
     function __construct()
     {
-        echo 'This is the view! </br>';
+
     }
 
-    public function rendor($name)
+    public function rendor($name) //This will rendor the correct view
     {
         require 'views/'. $name . '.php';
     }

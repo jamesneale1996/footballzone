@@ -1,5 +1,5 @@
 <?php require 'views/common/header.php'; ?>
 
-    <?= $this->msg; //We can echo the value of msg as we are in the view object ?> 
+    I am the homes view
 
 <?php require 'views/common/footer.php'; ?>

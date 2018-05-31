@@ -4,13 +4,17 @@ class home extends Controller
 {
     function __construct()
     {
-        parent::__construct();
-        echo 'we are in home!';
+        parent::__construct(); //Construct the parent to get its properties
+        $this->view->rendor('home/index'); //rendor the homes index view
     }
 
-    public function show()
+    public function show( $optional_args = false ) //This allows you to pass optional arguments to the url. eg /home/show/4
     {
-        echo '<br>We are inside homes show function!';
+        echo 'We are inside show! <br>';
+        echo 'Optional' . $optional_args . '<br>';
+
+        require 'models/help_model.php';
+        $model = new help_model(); //require the help model and make an instance of it
     }
 }
 

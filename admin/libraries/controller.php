@@ -1,10 +1,9 @@
 <?php
 
-class Controller
+class Controller //Base controller every other controller will be a child of
 {
     function __construct()
     {
-        echo 'Main Controller <br>';
-        $this->view = new view();
+        $this->view = new view(); //Main controller has the view so instantiate a view object. View class in view.php
     }
 }
