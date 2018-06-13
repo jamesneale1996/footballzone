@@ -15,19 +15,23 @@ class App
 
         if(file_exists('../app/controllers/'. $url[0] .'.php')) { //Check if the specified file and controller exists. $url[0] is the name of the controller
             $this->controller = $url[0]; //Set a controller variable equaling whatever controller we are in from above
-            unset($url[0]); //Take it out of the main url array as we already now have it stored in $this->controller
         }
         require_once '../app/controllers/'. $this->controller .'.php'; //We now need to require the correct controller file so it can be used
 
         $this->controller = new $this->controller; //Create an object of the controller
         if (isset($url[1])) { //Check if a method of the controller object is set
-            if (method_exists($this->controller, $url[1])) { //So we have a method set, but does it exist?
+            $reflection = new ReflectionMethod($this->controller, $url[1]);
+            if (method_exists($this->controller, $url[1]) && ($reflection->isPublic()) && ($url[1] != 'index') ) { //check if method exists, its a public function and its not index
                 $this->method = $url[1]; //Set our method to whatever method is passed in the url
-                unset($url[1]); //Remove it from our array as it is now stored in $method
+            } else {
+                $url = 'http://' . $_SERVER['HTTP_HOST'] . '/admin/public/'. $url[0] .'/';
+                header('Location: ' . $url, true, 302);              // Use either 301 or 302
+                die;
             }
         }
 
         $this->params = array_values($url);//If we have any params passed through set the values in the params array otherwise set a blank array
+
         call_user_func_array([$this->controller, $this->method], $this->params); //Takes an array containing the controller and the method with the second argument any params. This will call that method
     }
 

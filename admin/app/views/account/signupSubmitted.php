@@ -1,0 +1,1 @@
+Thank you for signing up - Once you have been verified you will be able to login! <a href="/admin/public/home/">Go Back Home</a>

@@ -1,30 +1,41 @@
-<form>
+
+<form action="add/" method="post">
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <label>Forename</label>
+        <input type="text" class="form-control" id="forename" placeholder="Forename" name="forename" required>
+    </div>
+
+    <div class="form-group">
+        <label>Surname</label>
+        <input type="text" class="form-control" id="surname" placeholder="Surname" name="surname" required>
+    </div>
+
+    <div class="form-group">
+        <label>Email address</label>
+        <input type="email" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label>Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required>
     </div>
 
     <label>Requested Permission</label>
-    <div class="checkbox">
-        <label><input type="checkbox" value="">View Only</label>
+    <div class="radio">
+        <label><input type="radio" name="permission" value="1" required>View Only</label>
     </div>
 
-    <div class="checkbox">
-        <label><input type="checkbox" value="">Editor</label>
+    <div class="radio">
+        <label><input type="radio" name="permission" value="2" required>Editor</label>
     </div>
 
-    <div class="checkbox disabled">
-        <label><input type="checkbox" value="" disabled>Publisher</label>
+    <div class="radio">
+        <label><input type="radio" name="permission" value="3" required>Publisher</label>
     </div>
 
-    <div class="checkbox disabled">
-        <label><input type="checkbox" value="" disabled>Admin</label>
+    <div class="radio">
+        <label><input type="radio" name="permission" value="4" required>Admin</label>
     </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

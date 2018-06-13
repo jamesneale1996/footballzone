@@ -10,7 +10,9 @@ RewriteBase /admin/public
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ $1/ [L,R=301]
+
 #Takes the url query string e.g url=home/ This will then be picked up in the parseUrl method via the GET
 #Example url: local/admin/index.php?url=home
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
-
