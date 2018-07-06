@@ -2,6 +2,10 @@
 
 //This is where users land!
 
+
+session_start();
+
+
 require_once '../app/core/App.php'; //Require the core components
 require_once '../app/core/Controller.php';
 

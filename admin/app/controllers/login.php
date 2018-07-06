@@ -4,8 +4,6 @@ class Login extends Controller
 {
     protected $loginResults;
     protected $passwordEntered;
-    protected $userid;
-    protected $forename;
 
     public function index ()
     {
@@ -44,18 +42,23 @@ class Login extends Controller
         }
     }
 
-    public function verify ()
+    protected function verify ()
     {
         $email = $this->loginResults['email_address'];
         $password = $this->loginResults['password'];
         $passwordEntered = $this->passwordEntered;
+        $forename = $this->loginResults['forename'];
 
         if (password_verify($passwordEntered, $password)) {
             echo 'Password correct!';
-            $_SESSION['userid'] = 'test';
-            $_SESSION['name'] = $this->forename;
+            $_SESSION['userid'] = $this->loginResults['id'];
+            $_SESSION['name'] = $this->loginResults['forename'];
+            $_SESSION['password'] = $this->loginResults['password'];
+            $_SESSION['email_address'] = $this->loginResults['email_address'];
+
         } else {
             echo 'Password Incorrect';
         }
+
     }
 }
